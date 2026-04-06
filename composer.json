@@ -1,0 +1,39 @@
+{
+    "name": "helios-live/filament-feature-showcase",
+    "description": "A Filament plugin that displays a beautiful version changelog modal with an always-accessible 'What's New' button.",
+    "keywords": [
+        "filament",
+        "laravel",
+        "changelog",
+        "feature-showcase",
+        "whats-new",
+        "version"
+    ],
+    "homepage": "https://github.com/helios-live/filament-feature-showcase",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Helios Live",
+            "email": "hello@helios.live"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "filament/filament": "^3.0 || ^4.0 || ^5.0",
+        "spatie/laravel-package-tools": "^1.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "HeliosLive\\FilamentFeatureShowcase\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HeliosLive\\FilamentFeatureShowcase\\FeatureShowcaseServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
