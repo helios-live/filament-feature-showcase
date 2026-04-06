@@ -41,9 +41,23 @@ public function panel(Panel $panel): Panel
 php artisan vendor:publish --tag=filament-feature-showcase-config
 ```
 
-### 3. User model requirement
+### 3. Add to your theme
 
-Your `User` model must have a `preferences` JSON column (cast to `array`):
+The plugin's Tailwind classes need to be included in your Filament theme. Add the following `@source` directive to your theme CSS file (usually `resources/css/filament/admin/theme.css`):
+
+```css
+@source '../../../../vendor/helios-live/filament-feature-showcase/resources/**/*.blade.php';
+```
+
+Then rebuild your theme:
+
+```bash
+npm run build
+```
+
+### 4. User model requirement
+
+Your `User` model must have a JSON column to store the last seen version (defaults to `preferences`). The column must be cast to `array`:
 
 ```php
 protected $casts = [
@@ -63,6 +77,8 @@ Schema::table('users', function (Blueprint $table) {
 });
 ```
 
+You can use a different column name by setting `user_column` in the config.
+
 ## Configuration
 
 Edit `config/filament-feature-showcase.php` to define your versions and features:
@@ -70,6 +86,8 @@ Edit `config/filament-feature-showcase.php` to define your versions and features
 ```php
 return [
     'current' => '1.2.0',
+
+    'user_column' => 'preferences',
 
     'preference_key' => 'last_seen_version',
 
