@@ -12,6 +12,8 @@ class FeatureShowcasePlugin implements Plugin
 {
     protected bool $showSidebarVersion = true;
 
+    protected bool $showButton = true;
+
     protected string $buttonPosition = 'bottom-left';
 
     final public function __construct() {}
@@ -38,6 +40,18 @@ class FeatureShowcasePlugin implements Plugin
         return $this->showSidebarVersion;
     }
 
+    public function showButton(bool $show = true): static
+    {
+        $this->showButton = $show;
+
+        return $this;
+    }
+
+    public function getShowButton(): bool
+    {
+        return $this->showButton;
+    }
+
     public function buttonPosition(string $position): static
     {
         $this->buttonPosition = $position;
@@ -56,6 +70,7 @@ class FeatureShowcasePlugin implements Plugin
             PanelsRenderHook::BODY_END,
             fn () => view('filament-feature-showcase::feature-showcase', [
                 'buttonPosition' => $this->buttonPosition,
+                'showButton' => $this->showButton,
             ]),
         );
 

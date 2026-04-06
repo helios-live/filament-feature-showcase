@@ -108,6 +108,7 @@ return [
 ```php
 FeatureShowcasePlugin::make()
     ->showSidebarVersion(true)     // Show version in sidebar footer (default: true)
+    ->showButton(true)             // Show the floating "What's New" button (default: true)
     ->buttonPosition('bottom-left') // Button position: bottom-left, bottom-right, top-left, top-right
 ```
 

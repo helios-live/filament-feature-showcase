@@ -33,6 +33,7 @@
     }"
 >
     {{-- Persistent "What's New" button --}}
+    @if($showButton ?? true)
     <button
         x-show="!open"
         x-on:click="open = true; expanded = '{{ $currentVersion }}';"
@@ -51,6 +52,7 @@
             </span>
         @endif
     </button>
+    @endif
 
     {{-- Modal backdrop --}}
     <template x-teleport="body">
